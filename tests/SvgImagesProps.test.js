@@ -19,12 +19,29 @@ describe("unittest for SvgImagesProps.js",()=>{
             svgimageprops = new SvgImageProps();
         });
 
-        it("access to rootLayer property.", ()=>{
+        it("access Attributes.", ()=>{
             svgimageprops.rootLayer = "root";
-            expect(svgimageprops["iid1"].rootLayer).toBe("root");
+            expect(svgimageprops.rootLayer).toBe("root");
+            expect(svgimageprops.noChache).toBe(true);
+            expect(svgimageprops.Path).toBe("??");
+            expect(svgimageprops.Script).toBe("??");
+            expect(svgimageprops.CRS).toBe("??");
+            expect(svgimageprops.refresh).toBe("??");
+            expect(svgimageprops.loadError).toBe(true);
+            expect(svgimageprops.styleMap).toBe("??");
+            expect(svgimageprops.altdMap).toBe("??");
+            expect(svgimageprops.isSVG2).toBe("??");
+            expect(svgimageprops.parentDocId).toBe("??");
+            expect(svgimageprops.childImages).toBe("??");
+            expect(svgimageprops.isClickable).toBe(true);
+            expect(svgimageprops.editalble).toBe(true);
+            expect(svgimageprops.metaSchema).toBe(true);
+            expect(svgimageprops.domMutationObserver).toBe("??"); // これはデフォルトの機能なので単体試験いらんかも
         });
 
-        it("access to controller property.", ()=>{
+        // TODO: svgImagesProps[id]=functionというケースあり、要確認
+
+        it("access to controller Attributes.", ()=>{
             svgimageprops.controller = "";
             expect(svgimageprops.controller).toBe("何が入っているの？");
             // src property
@@ -36,10 +53,34 @@ describe("unittest for SvgImagesProps.js",()=>{
         });
 
         it("access to path property.", ()=>{
-            svgimageprops.path = "";
-            expect(svgimageprops.controller).toBe("何が入っているの？");
+            svgimageprops.Path = "";
+            expect(svgimageprops.Path).toBe("何が入っているの？");
         });
         
+        it("access to script attributes.",()=>{
+
+            expect(svgimageprops.script.actualViewBox).toBe("");
+            expect(svgimageprops.script.childDocOp).toBe("");
+            expect(svgimageprops.script.CRS).toBe("");
+            expect(svgimageprops.script.docId).toBe("");
+            expect(svgimageprops.script.drawGeoJson).toBe("");
+            expect(svgimageprops.script.geoViewBox).toBe("");
+            expect(svgimageprops.script.getCanvasSize).toBe("");
+            expect(svgimageprops.script.getCORSURL).toBe("");
+            expect(svgimageprops.script.initialLoad).toBe("");
+            expect(svgimageprops.script.initObject).toBe("");
+            expect(svgimageprops.script.isIntersect).toBe("");
+            expect(svgimageprops.script.linkedDocOp).toBe("");
+            expect(svgimageprops.script.location).toBe("");
+            expect(svgimageprops.script.onload).toBe("");
+            expect(svgimageprops.script.refreshScreen).toBe("");
+            expect(svgimageprops.script.scale).toBe("");
+            expect(svgimageprops.script.transform).toBe("");
+            expect(svgimageprops.script.verIE).toBe("");
+            expect(svgimageprops.script.viewport).toBe("");
+            expect(svgimageprops.script.handleScriptCf()).toBe("");
+        });
+
         it("access to rootLayer property.", ()=>{
             svgimageprops.rootLayer = "root";
             expect(svgimageprops.rootLayer).toBe("root");
