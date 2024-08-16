@@ -27,11 +27,11 @@ describe("unittest for SvgImagesProps.js",()=>{
         });
         
         it("access Attribute of altdMap.",()=>{
-            expect(svgimageprops.altdMap).toBe("??");
+            expect(svgimageprops.altdMap).toBeInstanceOf(WeakMap);
         });
 
         it("access Attribute of styleMap.",()=>{
-            expect(svgimageprops.styleMap).toBe("??");
+            expect(svgimageprops.styleMap).toBeInstanceOf(WeakMap);
         });
 
         it("access Attributes.", ()=>{
