@@ -17,51 +17,55 @@ describe("unittest for SvgImagesProps.js",()=>{
         let svgimageprops;
         beforeAll(()=>{
             svgimageprops = new SvgImageProps();
+            svgimageprops.rootLayer = "root";
+        });
+
+        it("access Attribute of CRS.",()=>{
+            expect(svgimageprops.CRS).toBe("??");
+            expect(svgimageprops.CRS.f).toBe("??");
+            expect(svgimageprops.CRS.isSVG).toTrue("??");
+        });
+
+        
+        it("access Attribute of altdMap.",()=>{
+            expect(svgimageprops.altdMap).toBe("??");
+            expect(svgimageprops.altdMap.delete).toBe("??"); //これはdeleteは関数？
+        });
+
+        it("access Attribute of styleMap.",()=>{
+            expect(svgimageprops.styleMap).toBe("??");
+            expect(svgimageprops.styleMap.delete).toBe("??"); //これはdeleteは関数？
         });
 
         it("access Attributes.", ()=>{
-            svgimageprops.rootLayer = "root";
-            expect(svgimageprops.rootLayer).toBe("root");
-            expect(svgimageprops.noChache).toBe(true);
-            expect(svgimageprops.Path).toBe("??");
-            expect(svgimageprops.Script).toBe("??");
-            expect(svgimageprops.CRS).toBe("??");
-            expect(svgimageprops.refresh).toBe("??");
-            expect(svgimageprops.loadError).toBe(true);
-            expect(svgimageprops.styleMap).toBe("??");
-            expect(svgimageprops.altdMap).toBe("??");
-            expect(svgimageprops.isSVG2).toBe("??");
-            expect(svgimageprops.parentDocId).toBe("??");
             expect(svgimageprops.childImages).toBe("??");
-            expect(svgimageprops.isClickable).toBe(true);
-            expect(svgimageprops.editalble).toBe(true);
-            expect(svgimageprops.metaSchema).toBe(true);
+            expect(svgimageprops.commonQuery).toBe("??");
             expect(svgimageprops.domMutationObserver).toBe("??"); // これはデフォルトの機能なので単体試験いらんかも
+            expect(svgimageprops.editalble).toBe(true);
+            expect(svgimageprops.editing).toBe(true);
+            expect(svgimageprops.isClickable).toBe(true);
+            expect(svgimageprops.isSVG2).toBe("??");
+            expect(svgimageprops.loadError).toBe(true);
+            expect(svgimageprops.metaSchema).toBe(true);
+            expect(svgimageprops.noChache).toBe(true);
+            expect(svgimageprops.parentDocId).toBe("??");
+            expect(svgimageprops.preRenderControllerFunction).toBe("??");
+            expect(svgimageprops.Path).toBe("??");
+            expect(svgimageprops.rootLayer).toBe("root");
+            expect(svgimageprops.scale).toBe("??");
         });
 
         // TODO: svgImagesProps[id]=functionというケースあり、要確認
 
-        it("access to controller Attributes.", ()=>{
-            svgimageprops.controller = "";
+        it("access to Attribute of controller.", ()=>{
             expect(svgimageprops.controller).toBe("何が入っているの？");
-            // src property
-            svgimageprops.controller.src = "";
             expect(svgimageprops.controller.src).toBe("何が入っているの？");
-            // url property
-            svgimageprops.controller.url = "";
             expect(svgimageprops.controller.url).toBe("何が入っているの？");
-        });
-
-        it("access to path property.", ()=>{
-            svgimageprops.Path = "";
-            expect(svgimageprops.Path).toBe("何が入っているの？");
         });
         
         it("access to script attributes.",()=>{
-
             expect(svgimageprops.script.actualViewBox).toBe("");
             expect(svgimageprops.script.childDocOp).toBe("");
-            expect(svgimageprops.script.CRS).toBe("");
             expect(svgimageprops.script.docId).toBe("");
             expect(svgimageprops.script.drawGeoJson).toBe("");
             expect(svgimageprops.script.geoViewBox).toBe("");
@@ -81,16 +85,8 @@ describe("unittest for SvgImagesProps.js",()=>{
             expect(svgimageprops.script.handleScriptCf()).toBe("");
         });
 
-        it("access to rootLayer property.", ()=>{
-            svgimageprops.rootLayer = "root";
-            expect(svgimageprops.rootLayer).toBe("root");
-        });
-
-        it("access to commonQuery property.", ()=>{
-            svgimageprops.commonQuery = "???";
-            expect(svgimageprops.commonQuery).toBe("何が入っているの？");
-        });
     });
+
     describe("target SvgImagesProps class",()=>{
         let svgimagesprops;
 
