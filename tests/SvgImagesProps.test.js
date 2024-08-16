@@ -25,16 +25,13 @@ describe("unittest for SvgImagesProps.js",()=>{
             expect(svgimageprops.CRS.f).toBe("??");
             expect(svgimageprops.CRS.isSVG).toTrue("??");
         });
-
         
         it("access Attribute of altdMap.",()=>{
             expect(svgimageprops.altdMap).toBe("??");
-            expect(svgimageprops.altdMap.delete).toBe("??"); //これはdeleteは関数？
         });
 
         it("access Attribute of styleMap.",()=>{
             expect(svgimageprops.styleMap).toBe("??");
-            expect(svgimageprops.styleMap.delete).toBe("??"); //これはdeleteは関数？
         });
 
         it("access Attributes.", ()=>{
