@@ -21,9 +21,19 @@ describe("unittest for SvgImagesProps.js",()=>{
         });
 
         it("access Attribute of CRS.",()=>{
-            expect(svgimageprops.CRS).toBe("??");
-            expect(svgimageprops.CRS.f).toBe("??");
-            expect(svgimageprops.CRS.isSVG).toTrue("??");
+            const dummy_crs = {
+				a : 1 ,
+				b : 0 ,
+				c : 0 ,
+				d : 1 ,
+				e : 0 ,
+				f : 0 ,
+				isSVG2 : false
+			};
+            svgimageprops.updateCrs(dummy_crs);
+            expect(svgimageprops.CRS.a).toBe(1);
+            expect(svgimageprops.CRS.b).toBe(0);
+            expect(svgimageprops.CRS.isSVG).toBeFalsy();
         });
         
         it("access Attribute of altdMap.",()=>{
@@ -37,12 +47,10 @@ describe("unittest for SvgImagesProps.js",()=>{
         it("access Attributes.", ()=>{
             expect(svgimageprops.childImages).toBe("??");
             expect(svgimageprops.commonQuery).toBe("??");
-            expect(svgimageprops.domMutationObserver).toBe("??"); // これはデフォルトの機能なので単体試験いらんかも
             expect(svgimageprops.editalble).toBe(true);
             expect(svgimageprops.editing).toBe(true);
             expect(svgimageprops.isClickable).toBe(true);
             expect(svgimageprops.isSVG2).toBe("??");
-            expect(svgimageprops.loadError).toBe(true);
             expect(svgimageprops.metaSchema).toBe(true);
             expect(svgimageprops.noChache).toBe(true);
             expect(svgimageprops.parentDocId).toBe("??");
@@ -50,7 +58,15 @@ describe("unittest for SvgImagesProps.js",()=>{
             expect(svgimageprops.Path).toBe("??");
             expect(svgimageprops.rootLayer).toBe("root");
             expect(svgimageprops.scale).toBe("??");
+            // TODO: 標準機能なので単体試験いらんかも
+            expect(svgimageprops.domMutationObserver).toBe("??"); 
         });
+
+        it("Error Handling.", ()=>{
+            expect(svgimageprops.loadError).toBe(true);
+
+        });
+
 
         // TODO: svgImagesProps[id]=functionというケースあり、要確認
 
@@ -61,6 +77,7 @@ describe("unittest for SvgImagesProps.js",()=>{
         });
         
         it("access to script attributes.",()=>{
+            expect(svgimageprops.script).toBe("");
             expect(svgimageprops.script.actualViewBox).toBe("");
             expect(svgimageprops.script.childDocOp).toBe("");
             expect(svgimageprops.script.docId).toBe("");
@@ -85,18 +102,17 @@ describe("unittest for SvgImagesProps.js",()=>{
     });
 
     describe("target SvgImagesProps class",()=>{
-        let svgimagesprops;
+        let svgimagesprops, svgDocument;
 
         beforeAll(()=>{
             svgimagesprops = new SvgImagesProps();
-            let rootSvgImageProps = new SvgImageProps();
-            rootSvgImageProps.Path.location.href = "http://hogehoge.com/fuga.svg"
-            svgimagesprops["root"] = rootSvgImageProps;
         });
 
-        it("access to specific id", ()=>{
-            svgimagesprops["root"] = "rootLayer";
-            expect(svgimagesprops["root"]).toBe("rootLayer");
+        it("create a root document.", ()=>{
+            let id = "root";
+            svgDocument  = new DOMParser();
+            svgimagesprops.createDocument(id, svgDocument);
+            expect(svgimagesprops.get("root")).toBe(Object);
         });
         
         it("access to specific id", ()=>{
