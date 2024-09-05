@@ -30,9 +30,10 @@ describe("unittest for SvgImagesProps.js",()=>{
 				isSVG2 : false
 			};
             svgimageprops.updateCrs(dummy_crs);
-            expect(svgimageprops.CRS.a).toBe(1);
+            expect(svgimageprops.CRS.a).toBe(1); // a-fはCRS配下にコピー
             expect(svgimageprops.CRS.b).toBe(0);
-            expect(svgimageprops.CRS.isSVG2).toBeFalsy();
+            expect(svgimageprops.CRS.isSVG2).toBeUndefined(); //isSVG2はsvgimageprops直下に移動
+            expect(svgimageprops.isSVG2).toBeFalsy();
         });
         
         it("access Attribute of altdMap.",()=>{
@@ -49,7 +50,6 @@ describe("unittest for SvgImagesProps.js",()=>{
             svgimageprops.commonQuery = "?q=abcd";
             expect(svgimageprops.commonQuery).toBe("?q=abcd");
         });
-
 
         it("access Attributes.", ()=>{
             expect(svgimageprops.childImages).toEqual([]);
