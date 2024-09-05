@@ -17,7 +17,6 @@ describe("unittest for SvgImagesProps.js",()=>{
         let svgimageprops;
         beforeAll(()=>{
             svgimageprops = new SvgImageProps();
-            svgimageprops.rootLayer = "root";
         });
 
         it("access Attribute of CRS.",()=>{
@@ -33,7 +32,7 @@ describe("unittest for SvgImagesProps.js",()=>{
             svgimageprops.updateCrs(dummy_crs);
             expect(svgimageprops.CRS.a).toBe(1);
             expect(svgimageprops.CRS.b).toBe(0);
-            expect(svgimageprops.CRS.isSVG).toBeFalsy();
+            expect(svgimageprops.CRS.isSVG2).toBeFalsy();
         });
         
         it("access Attribute of altdMap.",()=>{
@@ -44,14 +43,21 @@ describe("unittest for SvgImagesProps.js",()=>{
             expect(svgimageprops.styleMap).toBeInstanceOf(WeakMap);
         });
 
+        it("access Attribute of commonQuery.", ()=>{ // クエリストリングにJWTキーを与えて認可を突破するための仕組み
+            //expect(svgimageprops.commonQuery).toBeNull(); //本来こっちを採用したい
+            expect(svgimageprops.commonQuery).toBeUndefined();
+            svgimageprops.commonQuery = "?q=abcd";
+            expect(svgimageprops.commonQuery).toBe("?q=abcd");
+        });
+
+
         it("access Attributes.", ()=>{
-            expect(svgimageprops.childImages).toBe("??");
-            expect(svgimageprops.commonQuery).toBe("??");
-            expect(svgimageprops.editalble).toBe(true);
-            expect(svgimageprops.editing).toBe(true);
-            expect(svgimageprops.isClickable).toBe(true);
+            expect(svgimageprops.childImages).toEqual([]);
+            expect(svgimageprops.editalble).toBe(false);
+            expect(svgimageprops.editing).toBe(false);
+            expect(svgimageprops.isClickable).toBe(false);
             expect(svgimageprops.isSVG2).toBe("??");
-            expect(svgimageprops.metaSchema).toBe(true);
+            expect(svgimageprops.metaSchema).toBe(false);
             expect(svgimageprops.noChache).toBe(true);
             expect(svgimageprops.parentDocId).toBe("??");
             expect(svgimageprops.preRenderControllerFunction).toBe("??");

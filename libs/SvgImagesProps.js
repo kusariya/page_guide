@@ -31,6 +31,10 @@ class SvgImageProps{
         this.childImages = [];
         this.controller = '';
         this.script = '';
+        this.commonQuery = undefined; //TODO: 事前にNullか""で定義しておくべき
+        this.isSVG2 = false;
+        this.rootLayer = "";
+        this.parentDocId = "";
     }
     /**
      * Cordinate Reference System（座標参照系）
@@ -46,7 +50,8 @@ class SvgImageProps{
      */
     updateCrs(crs){
         // this.CRS = crs これでよくない？
-        this.CRS = {a: crs.a, b: crs.b, c: crs.c, d: crs.d, e: crs.e, f: crs.f, isSVG2: crs.isSVG2}
+        this.CRS = {a: crs.a, b: crs.b, c: crs.c, d: crs.d, e: crs.e, f: crs.f}
+        this.isSVG2 = crs.isSVG2;
     }
 }
 
